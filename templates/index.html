@@ -26,9 +26,9 @@
                         <li class="nav-item dropdown">
                             <a class="nav-link dropdown-toggle" id="navbarDropdown" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false">Find</a>
                             <ul class="dropdown-menu" aria-labelledby="navbarDropdown">
-                                {% for list in lists %}
-                                <li><a class="dropdown-item" href="{{ url_for('homepage', list_type="{{list}}" ) }}" class="btn btn-outline-info">{{list}}</a></li>                               
-                                <li><hr class="dropdown-divider" /></li>
+                                {%for element in lists: %}
+                                    <li><a class="dropdown-item" href="{{ url_for('homepage', list_name=element) }}">{{ element|capitalize }}</a></li>
+                                    <li><hr class="dropdown-divider" /></li>
                                 {% endfor %}
                             </ul>
                         </li>
@@ -53,8 +53,8 @@
         <div class="col-lg-12 text-center">
             <h1 class="mt-5">Witaj w mojej bibliotece filmów</h1>
             <p class="lead">Znajdziesz tutaj tylko najlepsze tytuły!</p>
-            <h2 class="mt-5">Wyświetlam {{ lists|list }}</h2>
-        </div>
+            
+                  </div>
         <section class="py-5">
         {% for movie in movies %}
         <div class="col-lg-3 col-md-6 mb-4">

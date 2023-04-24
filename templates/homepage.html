@@ -6,7 +6,8 @@
    <div class="col-lg-12 text-center">
        <h1 class="mt-5">Witaj w mojej bibliotece filmów</h1>
        <p class="lead">Znajdziesz tutaj tylko najlepsze tytuły!</p>
-       <h2 class="mt-5">Wyświetlam {{ lists|list }}</h2>
+       <h2 class="mt-5">Wyświetlam {{list_name}}</h2>
+      
    </div>
 
    {% for movie in movies %}

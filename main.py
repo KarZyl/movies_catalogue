@@ -13,12 +13,12 @@ def movies_gitpage():
 @app.route('/')
 def homepage():
     lists = tmdb_client.get_lists()
-    selected_list = request.args.get('list_type', 'popular')
+    selected_list = request.args.get('list_name', 'popular')
     if selected_list in lists:
         pass
     else:
         selected_list = 'popular'
-    movies = tmdb_client.get_movies(how_many=8, list_type=selected_list)
+    movies = tmdb_client.get_movies(how_many=8, list_name=selected_list)
     
    
     return render_template("homepage.html", movies=movies, current_list=selected_list, lists=lists)

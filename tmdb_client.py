@@ -56,8 +56,8 @@ def get_movie_images(movie_id):
     return response.json()
 
 
-def get_movies_list(list_type):
-    endpoint = f"https://api.themoviedb.org/3/movie/{list_type}"
+def get_movies_list(list_name):
+    endpoint = f"https://api.themoviedb.org/3/movie/{list_name}"
     headers = {
         "Authorization": f"Bearer {API_TOKEN}"
     }
@@ -65,8 +65,8 @@ def get_movies_list(list_type):
     response.raise_for_status()
     return response.json()
 
-def get_movies(how_many, list_type):
-    data = get_movies_list(list_type)
+def get_movies(how_many, list_name):
+    data = get_movies_list(list_name)
     return data["results"][:how_many]
 
 def get_lists():
