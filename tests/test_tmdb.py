@@ -69,3 +69,16 @@ def test_get_movie_images(monkeypatch):
 
    movie_images = tmdb_client.get_movie_images(movie_id='Monkey')
    assert movie_images == mock_movie_images
+
+from main import app
+import pytest
+
+@pytest.mark.parametrize("list_type", ["now_playing", "upcoming", "popular", "top_rated"])
+def test_homepage(monkeypatch, list_type):
+   api_mock = Mock(return_value={'results': []})
+   monkeypatch.setattr("tmdb_client.call_tmdb_api", api_mock)
+
+   with app.test_client() as client:
+       response = client.get(f"/?list_name={list_type}")
+       assert response.status_code == 200
+       api_mock.assert_called_once_with(f"movie/{list_type}")
